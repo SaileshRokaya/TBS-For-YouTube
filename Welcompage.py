@@ -7,74 +7,64 @@ from tkinter import ttk
 import functools
 
 
-# ======================================================================GUI_Designing======================================================================================
+
+
+#======================================================================GUI_Designing======================================================================================
 class TBS:
     def __init__(self):
-        self.root = Tk()
+        self.root=Tk()
         self.root.geometry("1920x1080+0+0")
         self.root.state('zoomed')
-        self.root.title(
-            "TBS-Taxi Booking System || Developed By Sailesh Rokaya")
+        self.root.title("TBS-Taxi Booking System || Developed By Sailesh Rokaya")
         self.root.config(bg="#2E4CC5")
 
-        # ===========Title=============
-        self.icon_title = PhotoImage(file="images/logo.png")
-        title = Label(self.root, text="Taxi Booking System", image=self.icon_title, compound=LEFT, font=(
-            "time new roman", 40, "bold"), bg="#010c48", fg="white", anchor="w", padx=20).place(x=0, y=0, relwidth=1, height=70)
+      
+        
+        
+        
+        
+        #===========Title=============
+        self.icon_title=PhotoImage(file="images/logo.png")
+        title = Label(self.root, text="Taxi Booking System", image=self.icon_title,compound=LEFT, font=("time new roman", 40, "bold"),bg="#010c48",fg="white", anchor="w",padx=20).place(x=0,y=0, relwidth=1, height=70)
 
-        # ===========ProjectIcon=============
-        photo = PhotoImage(file="images/logo.png")
+        #===========ProjectIcon=============
+        photo = PhotoImage(file = "images/logo.png")
         self.root.iconphoto(False, photo)
+        
+        #============Clock===============
+        self.lbl_clock = Label(self.root,text="Welcome to Taxi Booking System\t\t Date: DD-MM-YYYY\t\t Time: HH:MM:SS" ,font=("time new roman", 15),bg="#4d636d",fg="white")
+        self.lbl_clock.place(x=0,y=70, relwidth=1, height=30)
 
-        # ============Clock===============
-        self.lbl_clock = Label(self.root, text="Welcome to Taxi Booking System\t\t Date: DD-MM-YYYY\t\t Time: HH:MM:SS",
-                               font=("time new roman", 15), bg="#4d636d", fg="white")
-        self.lbl_clock.place(x=0, y=70, relwidth=1, height=30)
-
-        # =============LoginFrame===========
-        Frame_Login = Frame(self.root, bd=5, relief=RIDGE, bg="white")
+        #=============LoginFrame===========
+        Frame_Login=Frame(self.root,bd=5,relief=RIDGE,bg="white")
         Frame_Login.place(x=1210, y=110, width=315, height=640)
 
-        # ===============ComboBoxForGender-Row-1==============================
-        txt_Utype = ttk.Combobox(Frame_Login, values=("Select UserType", "Customer",
-                                 "Driver", "Employee"), state='readonly', justify=CENTER, font=("Andalus", 10))
-        txt_Utype.place(x=65, y=100, width=200, height=30)
+        #===============ComboBoxForGender-Row-1==============================
+        txt_Utype=ttk.Combobox(Frame_Login, values=("Select UserType","Customer","Driver","Employee"),state='readonly',justify=CENTER,font=("Andalus",10))
+        txt_Utype.place(x=65,y=100, width=200, height=30)
         txt_Utype.current(0)
 
-        # ===============Label==============
-        loginTitel = Label(Frame_Login, text="Login System", font=(
-            "Elephant", 30, "bold"), bg="white").place(x=0, y=30, relwidth=1)
-        lbl_email = Label(Frame_Login, text="Email*", bg="white",
-                          font=("Andalus", 15), fg="#767171").place(x=0, y=150, relwidth=1)
-        lbl_password = Label(Frame_Login, text="Password*", bg="white",
-                             font=("Andalus", 15), fg="#767171").place(x=0, y=230, relwidth=1)
-        lbl_hr = Label(Frame_Login, bg="lightgray").place(
-            x=38, y=490, width=250, height=2)
+        #===============Label==============
+        loginTitel=Label(Frame_Login,text="Login System", font=("Elephant",30,"bold"),bg="white").place(x=0,y=30,relwidth=1)
+        lbl_email=Label(Frame_Login,text="Email*",bg="white", font=("Andalus",15), fg="#767171").place(x=0,y=150, relwidth=1)
+        lbl_password=Label(Frame_Login,text="Password*", bg="white", font=("Andalus",15), fg="#767171").place(x=0,y=230,relwidth=1)
+        lbl_hr=Label(Frame_Login, bg="lightgray").place(x=38,y=490,width=250,height=2)
 
-        lbl_hrOR = Label(Frame_Login, text="OR", bg="white", font=(
-            "times new roman", 15, "bold")).place(x=150, y=475)
-        lbl_member = Label(Frame_Login, text="Don't have an account?", bg="white", font=(
-            "times new roman", 10)).place(x=80, y=535)
+        lbl_hrOR=Label(Frame_Login,text="OR", bg="white",font=("times new roman",15,"bold")).place(x=150,y=475)
+        lbl_member=Label(Frame_Login,text="Don't have an account?", bg="white",font=("times new roman",10)).place(x=80,y=535)
+        #===============TextBox==============
+        txtemail=Entry(Frame_Login,  font=("Andalus",10),bg="white", fg="#767171").place(x=65,y=190, width=200, height=30)
+        txtpassword=Entry(Frame_Login,  font=("Andalus",10), bg="white", show="*", fg="#767171").place(x=65,y=280, width=200, height=30)
+        #============btn_logout=========
+        btn_logIn=Button(Frame_Login, text="LogIn", font=("time new roman", 15, "bold"), bg="#418BCA",activebackground="#418BCA", cursor="hand2").place(x=65,y=350, height=35, width=200)
+        btn_cancel=Button(Frame_Login, text="Cancel",command=quit, font=("time new roman", 15, "bold"), bg="#C42F11",activebackground="#C42F11", cursor="hand2").place(x=65,y=420, height=35, width=200)
+        btn_forgot=Button(Frame_Login, text="Forgot Password?", font=("time new roman", 10),bd=0, bg="white",activebackground="white",fg="#418BCA",activeforeground="#418BCA", cursor="hand2").place(x=95,y=500, height=35, width=150)
+        btn_Signup=Button(Frame_Login, text="Sign Up",  font=("time new roman", 10),bd=0, bg="white",activebackground="white",fg="#418BCA",activeforeground="#418BCA", cursor="hand2").place(x=210,y=529, height=35, width=60)
 
-        # ===============TextBox==============
-        txtemail = Entry(Frame_Login,  font=("Andalus", 10), bg="white",
-                         fg="#767171").place(x=65, y=190, width=200, height=30)
-        txtpassword = Entry(Frame_Login,  font=("Andalus", 10), bg="white",
-                            show="*", fg="#767171").place(x=65, y=280, width=200, height=30)
 
-        # ============btn_logout=========
-        btn_logIn = Button(Frame_Login, text="LogIn", font=("time new roman", 15, "bold"), bg="#418BCA",
-                           activebackground="#418BCA", cursor="hand2").place(x=65, y=350, height=35, width=200)
-        btn_cancel = Button(Frame_Login, text="Cancel", command=quit, font=("time new roman", 15, "bold"),
-                            bg="#C42F11", activebackground="#C42F11", cursor="hand2").place(x=65, y=420, height=35, width=200)
-        btn_forgot = Button(Frame_Login, text="Forgot Password?", font=("time new roman", 10), bd=0, bg="white", activebackground="white",
-                            fg="#418BCA", activeforeground="#418BCA", cursor="hand2").place(x=95, y=500, height=35, width=150)
-        btn_Signup = Button(Frame_Login, text="Sign Up",  font=("time new roman", 10), bd=0, bg="white", activebackground="white",
-                            fg="#418BCA", activeforeground="#418BCA", cursor="hand2").place(x=210, y=529, height=35, width=60)
-
-        # ============images=====================
-        self.image1 = PhotoImage(file="images/slid1.png")
-        self.image2 = ImageTk.PhotoImage(file="images/slid3.jpg")
+        #============images=====================
+        self.image1=PhotoImage(file="images/slid1.png")
+        self.image2=ImageTk.PhotoImage(file="images/slid3.jpg")
 
         #=============SilderFrame=============
         Frame_slider=Frame(self.root)
@@ -91,13 +81,18 @@ class TBS:
         #============Footer====================
         lbl_footer = Label(self.root, text="TBS-Taxi Booking System || Developed By Sailesh Rokaya\n For Technical Support Student ID: 2020426 ",font=("time new roman", 15),bg="#4d636d",fg="white").pack(side=BOTTOM,fill=X)
         self.update_date_time()
-
+         
     def update_date_time(self):
         time_=time.strftime("%I:%M:%S")
         date_=time.strftime("%d-%m-%Y")
         self.lbl_clock.config(text=f"Welcome to Taxi Booking System\t\t Date:{str(date_)} \t\t Time:{str(time_)} ")
         self.lbl_clock.after(200,self.update_date_time)
+        
+        
+
     
+
+
     def slider_func(self):
         self.x-=1
         if self.x==0:
@@ -115,6 +110,6 @@ class TBS:
         self.lblimg2.after(1,self.slider_func)
 
 
-if __name__ == "__main__":
-    obj = TBS()
+if __name__=="__main__":
+    obj=TBS()
     mainloop()
